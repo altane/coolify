@@ -341,7 +341,7 @@ respond 404
                         'service' => 'coolify',
                         'rule' => "Host(`{$host}`)",
                         'tls' => [
-                            'certresolver' => 'letsencrypt',
+                            'certresolver' => env('CERT_RESOLVER', 'letsencrypt'),
                         ],
                     ];
                     $traefik_dynamic_conf['http']['routers']['coolify-realtime-wss'] = [
@@ -351,7 +351,7 @@ respond 404
                         'service' => 'coolify-realtime',
                         'rule' => "Host(`{$host}`) && PathPrefix(`/app`)",
                         'tls' => [
-                            'certresolver' => 'letsencrypt',
+                            'certresolver' => env('CERT_RESOLVER', 'letsencrypt'),
                         ],
                     ];
                 }
